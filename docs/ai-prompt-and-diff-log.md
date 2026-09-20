@@ -142,4 +142,56 @@ The rejected features increased the project beyond its intended beginner-level s
 \- Added `docs/elicitation-audit.md`
 
 \- Updated `docs/ai-prompt-and-diff-log.md`
+## Milestone Three: Domain Model and AI Critique
 
+### Prompt
+
+"Using the Milestone 2 requirements for the Study Task Tracker, draft a domain model. Include the main entities, their attributes, and relationships. Do not implement the application."
+
+### AI-Generated Model
+
+The AI created the following entities:
+
+- User
+- User Settings
+- Course
+- Assignment
+- Reminder
+- Tag
+- Audit Log
+
+### Changes Accepted
+
+- Assignment as the central entity
+- Assignment ID
+- Title
+- Course information
+- Due date
+- Completion status
+
+### Changes Rejected
+
+- User accounts and passwords
+- User settings
+- Audit logs
+- Email reminders
+- Tags
+- Separate Course entity
+- Priority field
+- Created and updated timestamps
+
+### Changes Made
+
+- Reduced the model to Assignment and AssignmentStatus.
+- Kept course as an Assignment attribute.
+- Restricted status to INCOMPLETE or COMPLETED.
+- Added mark_complete and update behavior.
+- Added derived overdue behavior.
+- Preserved the AI’s original draft without editing it.
+
+### Files Added
+
+- `docs/m3-ai-domain-model-first-draft.md`
+- `docs/m3-domain-model.mmd`
+- `docs/m3-domain-model.png`
+- `docs/m3-domain-model-critique.md`

@@ -1,0 +1,19 @@
+classDiagram
+    class Assignment {
+        +int id
+        +string title
+        +string course
+        +date due_date
+        +AssignmentStatus status
+        +mark_complete()
+        +update(title, course, due_date)
+        +is_overdue(current_date) boolean
+    }
+
+    class AssignmentStatus {
+        <<enumeration>>
+        INCOMPLETE
+        COMPLETED
+    }
+
+    Assignment --> AssignmentStatus : has
