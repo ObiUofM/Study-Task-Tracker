@@ -195,3 +195,33 @@ The AI created the following entities:
 - `docs/m3-domain-model.mmd`
 - `docs/m3-domain-model.png`
 - `docs/m3-domain-model-critique.md`
+## Milestone Five: Walking Skeleton and CI
+
+### Prompt
+
+Help me implement one thin slice for the Study Task Tracker. The feature should allow a user to enter a task, save it in SQLite, and display the saved task on the webpage. Also help me create an end-to-end test and a GitHub Actions CI workflow.
+
+### AI-Generated Suggestions
+
+The AI suggested:
+
+- Adding an HTML task-entry form.
+- Using a Flask POST request to process the form.
+- Saving tasks in a SQLite database.
+- Reading saved tasks from SQLite and displaying them on the page.
+- Creating a pytest test that submits and verifies a task.
+- Creating a GitHub Actions workflow that installs dependencies, checks the build, and runs pytest.
+
+### Changes Accepted
+
+I accepted the Flask form, SQLite storage, task display, end-to-end pytest test, and GitHub Actions workflow.
+
+### Changes Rejected or Modified
+
+I rejected using the `if __name__ == "__main__"` block. The application is started using the Flask command instead:
+
+`python -m flask --app app run --debug`
+
+### Resulting Difference
+
+The original application only displayed a heading and paragraph. The updated application accepts a real task, stores it in SQLite, and displays it after submission. The test suite increased from one basic page test to two tests, including an end-to-end storage test. Continuous integration was added to build and test the project on every push or pull request.
