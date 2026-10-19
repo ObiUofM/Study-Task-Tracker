@@ -25,7 +25,10 @@ def test_add_task_end_to_end(tmp_path, monkeypatch):
 
     response = client.post(
         "/",
-        data={"title": "Finish Digital Design homework"},
+       data={
+    "title": "Finish Digital Design homework",
+    "due_date": "2030-12-31",
+},
         follow_redirects=True,
     )
 

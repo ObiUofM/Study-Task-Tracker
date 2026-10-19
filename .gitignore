@@ -2,3 +2,8 @@
 __pycache__/
 .pytest_cache/
 tasks.db
+.coverage
+htmlcov/
+.pytest_cache/
+__pycache__/
+tasks.db
