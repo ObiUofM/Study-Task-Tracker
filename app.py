@@ -25,6 +25,7 @@ def deadline_notification(due_date):
     else:
         return f"🟢 Due in {days_left} days"
 
+
 def initialize_database():
     connection = sqlite3.connect(DATABASE)
 
@@ -51,23 +52,19 @@ def initialize_database():
 
     connection.commit()
     connection.close()
-@app.route("/", methods=["GET", "POST"])
-def home():
-    if request.method == "POST":
-        title = request.form.get("title", "").strip()
-        due_date = request.form.get("due_date", "").strip()
 
-        if title and due_date:
-            connection = sqlite3.connect(DATABASE)
-            connection.execute(
-                "INSERT INTO tasks (title, due_date) VALUES (?, ?)",
-                (title, due_date),
-            )
-            connection.commit()
-            connection.close()
 
-        return redirect(url_for("home"))
+def add_task(title, due_date):
+    connection = sqlite3.connect(DATABASE)
+    connection.execute(
+        "INSERT INTO tasks (title, due_date) VALUES (?, ?)",
+        (title, due_date),
+    )
+    connection.commit()
+    connection.close()
 
+
+def get_tasks():
     connection = sqlite3.connect(DATABASE)
     tasks = connection.execute(
         """
@@ -77,6 +74,22 @@ def home():
         """
     ).fetchall()
     connection.close()
+
+    return tasks
+
+
+@app.route("/", methods=["GET", "POST"])
+def home():
+    if request.method == "POST":
+        title = request.form.get("title", "").strip()
+        due_date = request.form.get("due_date", "").strip()
+
+        if title and due_date:
+            add_task(title, due_date)
+
+        return redirect(url_for("home"))
+
+    tasks = get_tasks()
 
     return render_template_string(
         """
